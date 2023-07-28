@@ -69,13 +69,13 @@ class ViewController: UIViewController {
     // MARK: - Private methods
     private func setupLoginButton() {
         loginButton.layer.cornerRadius = 10
-        loginButton.layer.shadowColor = (UIColor(named: "priceColor") ?? UIColor.gray).cgColor
+        loginButton.layer.shadowColor = UIColor.systemGray5.cgColor
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 8)
         loginButton.layer.shadowOpacity = 0.4
         loginButton.layer.shadowRadius = 8
         
         loginButton.isUserInteractionEnabled = false
-        loginButton.backgroundColor = .systemGray3
+        loginButton.backgroundColor = .systemGray5
     }
 }
 
@@ -88,11 +88,12 @@ extension ViewController: UITextFieldDelegate {
             let isValidEmail = check(email: text)
             loginButton.isUserInteractionEnabled = isValidEmail
             loginButton.backgroundColor = isValidEmail ? UIColor(named: "priceColor") : .systemGray5
-            
+            loginButton.layer.shadowColor = UIColor.systemGray5.cgColor
             if isValidEmail {
                 email = text
-                emailImageView.tintColor = .systemGray3
-                emailView.backgroundColor = .systemGray3
+                emailImageView.tintColor = .systemGray5
+                emailView.backgroundColor = .systemGray5
+                loginButton.layer.shadowColor = UIColor(named: "priceColor")?.cgColor
             } else {
                 makeErrorField(textField: textField)
             }
@@ -100,11 +101,12 @@ extension ViewController: UITextFieldDelegate {
             let isValidPassword = check(password: text)
             loginButton.isUserInteractionEnabled = isValidPassword
             loginButton.backgroundColor = isValidPassword ? UIColor(named: "priceColor") : .systemGray5
-            
+            loginButton.layer.shadowColor = UIColor.systemGray5.cgColor
             if isValidPassword {
                 password = text
-                passwordImageView.tintColor = .systemGray3
-                passwordView.backgroundColor = .systemGray3
+                passwordImageView.tintColor = .systemGray5
+                passwordView.backgroundColor = .systemGray5
+                loginButton.layer.shadowColor = UIColor(named: "priceColor")?.cgColor
             } else {
                 makeErrorField(textField: textField)
             }
